@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ConfirmAsistenciaPage } from './confirm-asistencia.page';
+import { ConfirmarAsistenciaPage } from './confirm-asistencia.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ConfirmAsistenciaPage
+    component: ConfirmarAsistenciaPage
   }
 ];
 
