@@ -16,7 +16,7 @@ export class AgregarNuevoPage {
   dominio: string = '@duocuc.cl'; // Dominio por defecto
   universidad: string = 'DuocUC'; // Universidad por defecto es DuocUC
 
-  constructor(private navCtrl: NavController, private localdbService: LocaldbService) { }
+  constructor(private navCtrl: NavController, private localdbService: LocaldbService) {}
 
   onSubmit() {
     // Validar si todos los campos están completos
@@ -34,7 +34,7 @@ export class AgregarNuevoPage {
 
     // Llama al servicio para guardar el nuevo usuario
     this.localdbService.guardarUsuario(nuevoUsuario);
-    this.navCtrl.navigateBack('/home'); // Redirige a la página de inicio
+    this.navCtrl.navigateBack('/admin'); // Redirige a la página de administración
   }
 
   // Método para cambiar el dominio según la universidad y rol seleccionados
