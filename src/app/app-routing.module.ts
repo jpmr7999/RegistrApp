@@ -16,14 +16,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/principal/principal.module').then( m => m.PrincipalPageModule)
   },
   {
-    path: 'qr-code',
-    loadChildren: () => import('./pages/qr-code/qr-code.module').then( m => m.QrCodePageModule)
-  },
-  {
-    path: 'restablecer',
-    loadChildren: () => import('./pages/restablecer/restablecer.module').then( m => m.RestablecerPageModule)
-  },
-  {
     path: 'ver-asistencia',
     loadChildren: () => import('./pages/ver-asistencia/ver-asistencia.module').then( m => m.VerAsistenciaPageModule)
   },
@@ -46,6 +38,14 @@ const routes: Routes = [
   {
     path: 'fecha-asistencia',
     loadChildren: () => import('./pages/fecha-asistencia/fecha-asistencia.module').then( m => m.FechaAsistenciaPageModule)
+  },
+  {
+    path: 'reestablecer',
+    loadChildren: () => import('./pages/reestablecer/reestablecer.module').then( m => m.ReestablecerPageModule)
+  },
+  {
+    path: 'codigo',
+    loadChildren: () => import('./pages/codigo/codigo.module').then( m => m.CodigoPageModule)
   },
 ];
 

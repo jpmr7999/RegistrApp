@@ -1,13 +1,39 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>ver-asistencia</ion-title>
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/alumno-principal"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title">Asistencias alumno</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">ver-asistencia</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="container">
+    <h2 class="header-title">Registro de Asistencia</h2>
+    
+    <!-- Accordion Group para asignaturas -->
+    <ion-accordion-group>
+      <ion-accordion *ngFor="let asignatura of asistenciasPorAsignatura">
+        <!-- Encabezado de cada asignatura -->
+        <ion-item slot="header" color="light" class="accordion-header">
+          <ion-label>
+            <h3 class="asignatura-title">{{ asignatura.nombre }}</h3>
+          </ion-label>
+        </ion-item>
+        
+        <!-- Lista de registros de asistencia -->
+        <ion-list slot="content" class="registro-list">
+          <ion-item *ngFor="let registro of asignatura.registros">
+            <ion-label class="registro-label">
+              <h3 class="registro-fecha">{{ registro.fecha }}</h3>
+              <p class="registro-estado">Estado: {{ registro.estado }}</p>
+            </ion-label>
+            <ion-badge slot="end" [color]="registro.estado === 'Presente' ? 'success' : (registro.estado === 'Justificado' ? 'warning' : 'danger')" class="estado-badge">
+              {{ registro.estado }}
+            </ion-badge>
+          </ion-item>
+        </ion-list>
+      </ion-accordion>
+    </ion-accordion-group>
+  </div>
 </ion-content>
