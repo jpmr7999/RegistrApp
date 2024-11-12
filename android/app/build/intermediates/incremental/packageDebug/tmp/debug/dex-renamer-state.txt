@@ -1,13 +1,13 @@
-#Mon Nov 11 22:47:55 CLST 2024
-base.0=C\:\\Users\\juanp\\Desktop\\RegistrApp\\RegistrApp\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\juanp\\Desktop\\RegistrApp\\RegistrApp\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\14\\classes.dex
-base.2=C\:\\Users\\juanp\\Desktop\\RegistrApp\\RegistrApp\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\2\\classes.dex
-base.3=C\:\\Users\\juanp\\Desktop\\RegistrApp\\RegistrApp\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\4\\classes.dex
-base.4=C\:\\Users\\juanp\\Desktop\\RegistrApp\\RegistrApp\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\5\\classes.dex
-base.5=C\:\\Users\\juanp\\Desktop\\RegistrApp\\RegistrApp\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\7\\classes.dex
-base.6=C\:\\Users\\juanp\\Desktop\\RegistrApp\\RegistrApp\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\8\\classes.dex
-base.7=C\:\\Users\\juanp\\Desktop\\RegistrApp\\RegistrApp\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.8=C\:\\Users\\juanp\\Desktop\\RegistrApp\\RegistrApp\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
+#Tue Nov 12 13:57:26 CLST 2024
+base.0=C\:\\Users\\gb_19\\Desktop\\RegistrApp\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=C\:\\Users\\gb_19\\Desktop\\RegistrApp\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\14\\classes.dex
+base.2=C\:\\Users\\gb_19\\Desktop\\RegistrApp\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\2\\classes.dex
+base.3=C\:\\Users\\gb_19\\Desktop\\RegistrApp\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\4\\classes.dex
+base.4=C\:\\Users\\gb_19\\Desktop\\RegistrApp\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\5\\classes.dex
+base.5=C\:\\Users\\gb_19\\Desktop\\RegistrApp\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\7\\classes.dex
+base.6=C\:\\Users\\gb_19\\Desktop\\RegistrApp\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\8\\classes.dex
+base.7=C\:\\Users\\gb_19\\Desktop\\RegistrApp\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.8=C\:\\Users\\gb_19\\Desktop\\RegistrApp\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
 path.0=classes.dex
 path.1=14/classes.dex
 path.2=2/classes.dex

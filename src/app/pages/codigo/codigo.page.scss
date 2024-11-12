@@ -7,12 +7,12 @@
     text-align: center;
     margin-top: 30px;
   }
-  
+
   /* Estilos del código QR */
   .qr-container {
     margin-bottom: 20px;
   }
-  
+
   .qr-wrapper {
     display: flex;
     justify-content: center;
@@ -22,7 +22,7 @@
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
-  
+
   .qr-placeholder {
     width: 190px;
     height: 190px;
@@ -30,27 +30,27 @@
     border-radius: 10px;
     border: 2px solid #ddd;
   }
-  
+
   /* Estilo para el texto QR */
   .qr-text {
     font-size: 16px;
     font-weight: 500;
     color: #555;
   }
-  
+
   /* Estilos para el campo de texto para hacerlo más visible */
   .input-field {
     width: 100%;
     max-width: 400px;
     margin-top: 20px;
   }
-  
+
   /* Efecto al enfocarse en el campo de texto */
   .input-field:focus {
     border-color: #0056b3;  /* Borde más oscuro al enfocar */
     box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Sombra al enfocar */
   }
-  
+
   /* Botón para compartir */
   .submit-button {
     background-color: var(--ion-color-primary);
@@ -59,18 +59,17 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-weight: bold;
   }
-  
+
   .submit-button:hover {
     background-color: var(--ion-color-primary-shade);
   }
-  
+
   /* Fondo blanco y espaciado cómodo para ion-content */
   ion-content {
     background-color: #ffffff; /* Asegura que el fondo sea blanco */
   }
-  
+
   /* Asegurando que el fondo general sea blanco */
   ion-page {
     background-color: #ffffff !important;
   }
-  

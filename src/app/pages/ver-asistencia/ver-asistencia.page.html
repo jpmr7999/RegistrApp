@@ -1,16 +1,16 @@
 <ion-header>
-  <ion-toolbar color="tertiary">
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/alumno-principal"></ion-back-button>
+      <ion-back-button defaultHref="/alumnoprincipal"></ion-back-button>
     </ion-buttons>
-    <ion-title class="title">Asistencias alumno</ion-title>
+    <ion-title class="title">Asistencias Alumno</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
   <div class="container">
     <h2 class="header-title">Registro de Asistencia</h2>
-    
+
     <!-- Accordion Group para asignaturas -->
     <ion-accordion-group>
       <ion-accordion *ngFor="let asignatura of asistenciasPorAsignatura">
@@ -20,10 +20,10 @@
             <h3 class="asignatura-title">{{ asignatura.nombre }}</h3>
           </ion-label>
         </ion-item>
-        
+
         <!-- Lista de registros de asistencia -->
         <ion-list slot="content" class="registro-list">
-          <ion-item *ngFor="let registro of asignatura.registros">
+          <ion-item *ngFor="let registro of asignatura.registros" lines="none">
             <ion-label class="registro-label">
               <h3 class="registro-fecha">{{ registro.fecha }}</h3>
               <p class="registro-estado">Estado: {{ registro.estado }}</p>

@@ -23,10 +23,12 @@
     </ion-item>
 
     <ion-datetime
-      presentation="date"
-      (ionChange)="onDateSelected($event)"
-      placeholder="Selecciona una fecha">
-    </ion-datetime>
+    presentation="date"
+    [(ngModel)]="selectedDate"
+    class="readonly-date"
+    placeholder="Fecha automática"
+  ></ion-datetime>
+
 
     <ion-button
       expand="block"
