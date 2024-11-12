@@ -1,13 +1,27 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>restablecer</ion-title>
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Restablecer Contraseña</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">restablecer</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Restablecer Contraseña</ion-card-title>
+      <ion-card-subtitle>Ingresa tu correo para enviar el enlace de restablecimiento</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-input labelPlacement="floating" [(ngModel)]="email" required>
+            <div slot="label">Correo Electrónico <ion-text color="danger">(Requerido)</ion-text></div>
+          </ion-input>
+        </ion-item>
+      </ion-list>
+
+      <div class="button-container">
+        <ion-button expand="full" (click)="sendResetLink()">Enviar Enlace</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
