@@ -1,0 +1,43 @@
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>RegistrAPP</ion-title>
+      <ion-icon name="person-circle" slot="end" size="large" class="ion-margin-end" routerLink="/perfil"></ion-icon>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <div class="content-container">
+
+      <!-- Contenedor para el código QR -->
+      <div id="qrImage" class="qr-container">
+        <div class="qr-wrapper">
+          <qr-code [value]="qrText" size="190" errorCorrectionLevel="M"></qr-code>
+          <!-- Placeholder si qrText está vacío -->
+          <img *ngIf="!qrText" class="qr-placeholder" src="assets/qr.png" alt="Código QR">
+        </div>
+        <div class="qr-text ion-padding-top">{{qrText}}</div>
+      </div>
+
+      <!-- Campo de entrada de texto -->
+      <ion-textarea 
+        label="Escribe para generar el Código QR" 
+        labelPlacement="stacked" 
+        fill="outline"
+        [(ngModel)]="qrText"
+        rows="4" 
+        [autoGrow]="true"
+        class="input-field"
+      ></ion-textarea>
+
+      <!-- Botón para compartir -->
+      <ion-button (click)="captureScreen()" *ngIf="qrText" class="submit-button ion-margin-top" expand="block">
+        Compartir
+        <ion-icon slot="end" name="share-social-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-content>
+</div>
