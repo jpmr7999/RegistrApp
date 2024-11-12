@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ReestablecerPageRoutingModule } from './restablecer-routing.module';
+import { ReestablecerPageRoutingModule } from './reestablecer-routing.module';
 
-import { ReestablecerPage } from './restablecer.page';
+import { ReestablecerPage } from './reestablecer.page';
 
 @NgModule({
   imports: [

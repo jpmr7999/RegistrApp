@@ -4,8 +4,8 @@ import { LocaldbService } from '../../Service/localdb.service'; // Importa el se
 
 @Component({
   selector: 'app-reestablecer',
-  templateUrl: './restablecer.page.html',
-  styleUrls: ['./restablecer.page.scss'],
+  templateUrl: './reestablecer.page.html',
+  styleUrls: ['./reestablecer.page.scss'],
 })
 export class ReestablecerPage {
   email: string = '';
