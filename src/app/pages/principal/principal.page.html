@@ -1,13 +1,47 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>principal</ion-title>
+<ion-header>
+  <ion-toolbar color="danger">
+    <!-- Logo a la izquierda -->
+    <ion-buttons slot="start">
+      <ion-title>RegistrApp</ion-title>
+    </ion-buttons>
+
+    <!-- Botón de cerrar sesión a la derecha -->
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon name="person-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">principal</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<!-- Contenido principal -->
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="welcome-container">
+    <h2 class="welcome-title">Bienvenido, ¿Qué deseas hacer hoy?</h2>
+
+    <!-- Cuadro de info -->
+    <div class="info-card">
+      <img src="assets/xokas.jpg" alt="Gonzalo Perez" class="profile-image">
+      <h3 class="profile-name">Gonzalo Perez</h3>
+      <p class="institution">Institución: <strong>Duocuc</strong></p>
+      <p class="subject">Profesor: <strong>Informática</strong></p>
+    </div>
+
+    <!-- Mensaje adicional -->
+    <p class="reminder-message">
+      Recuerda que es fundamental que tus alumnos marquen su asistencia. ¡Asegúrate de motivarlos a participar en las clases!
+    </p>
+
+    <!-- Botón para marcar asistencia -->
+    <ion-button
+      expand="block"
+      color="primary"
+      shape="round"
+      size="large"
+      class="attendance-button"
+      (click)="goToFechaAsistenciaPage()">
+      <ion-icon slot="start" name="qr-code-outline"></ion-icon>
+      Marcar asistencia
+    </ion-button>
+  </div>
 </ion-content>
