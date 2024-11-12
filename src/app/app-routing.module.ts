@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'alumnoprincipal',
-    loadChildren: () => import('./pages/alumnoprincipal/alumnoprincipal.module').then( m => m.AlumnoprincipalPageModule)
+    loadChildren: () => import('./pages/alumnoprincipal/alumnoprincipal.module').then( m => m.AlumnoPrincipalPageModule)
   },
   {
     path: 'confirm-asistencia',
