@@ -32,10 +32,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/confirm-asistencia/confirm-asistencia.module').then( m => m.ConfirmAsistenciaPageModule)
   },
   {
-    path: 'escanearqr',
-    loadChildren: () => import('./pages/escanearqr/escanearqr.module').then( m => m.EscanearqrPageModule)
-  },
-  {
     path: 'fecha-asistencia',
     loadChildren: () => import('./pages/fecha-asistencia/fecha-asistencia.module').then( m => m.FechaAsistenciaPageModule)
   },
@@ -47,6 +43,11 @@ const routes: Routes = [
     path: 'codigo',
     loadChildren: () => import('./pages/codigo/codigo.module').then( m => m.CodigoPageModule)
   },
+  {
+    path: 'escaneo',
+    loadChildren: () => import('./pages/escaneo/escaneo.module').then( m => m.EscaneoPageModule)
+  },
+
 ];
 
 @NgModule({
