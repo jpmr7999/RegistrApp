@@ -31,7 +31,7 @@ export class FechaAsistenciaPage implements OnInit {
       console.log('Asistencia marcada para la fecha:', this.selectedDate);
       console.log('Sección seleccionada:', this.selectedSection);
       // Navegar a la página del código QR
-      this.navCtrl.navigateForward('/qr-code');
+      this.navCtrl.navigateForward('/codigo');
     } else {
       console.log('Por favor selecciona una fecha y una sección.');
     }
