@@ -4,8 +4,8 @@ import { LocaldbService } from '../../Service/localdb.service'; // Cambiado al n
 
 @Component({
   selector: 'app-alumno-principal',
-  templateUrl: './alumno-principal.page.html',
-  styleUrls: ['./alumno-principal.page.scss'],
+  templateUrl: './alumnoprincipal.page.html',
+  styleUrls: ['./alumnoprincipal.page.scss'],
 })
 export class AlumnoPrincipalPage implements OnInit {
   historialAsistencias: { fecha: string, hora: string, nombre: string, institucion: string, curso: string }[] = [];
