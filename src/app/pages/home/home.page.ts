@@ -62,9 +62,6 @@ export class HomePage {
     }
   }
 
-  agregarNuevoUsuario() {
-    this.navCtrl.navigateForward('/agregarnuevo');
-  }
 
   async onResetPassword() {
     this.navCtrl.navigateForward('/reestablecer');

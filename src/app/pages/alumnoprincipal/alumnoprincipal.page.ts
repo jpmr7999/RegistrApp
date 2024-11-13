@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { LocaldbService } from '../../Service/localdb.service'; // Cambiado al nuevo servicio
+import { LocaldbService } from '../../Service/localdb.service';
 
 @Component({
   selector: 'app-alumno-principal',
@@ -9,20 +9,15 @@ import { LocaldbService } from '../../Service/localdb.service'; // Cambiado al n
 })
 export class AlumnoPrincipalPage implements OnInit {
   historialAsistencias: { fecha: string, hora: string, nombre: string, institucion: string, curso: string }[] = [];
-  nombreUsuario: string = ''; // Nueva propiedad para almacenar el nombre del usuario
+  nombreUsuario: string = '';
 
-  constructor(private navCtrl: NavController, private localdbService: LocaldbService) { }
+  constructor(private navCtrl: NavController, private localdbService: LocaldbService) {}
 
   ngOnInit() {
-    // Inicializa el historial de asistencias si es necesario
-    this.localdbService.initializeHistorial();
-
-    // Carga el historial de asistencias desde localStorage
-    this.historialAsistencias = this.localdbService.getHistorialAsistencias();
-
-    // Obtiene el nombre del usuario
+    this.localdbService.initializeHistorial(); // Inicializar historial específico del usuario actual
+    this.historialAsistencias = this.localdbService.getHistorialAsistenciasActual(); // Cargar historial del usuario actual
     this.nombreUsuario = this.localdbService.getNombreUsuario();
-    console.log('Nombre de usuario:', this.nombreUsuario); // Para depuración
+    console.log('Nombre de usuario:', this.nombreUsuario);
   }
 
   irAHome() {
@@ -38,6 +33,6 @@ export class AlumnoPrincipalPage implements OnInit {
   }
 
   irACodigoQR() {
-    this.navCtrl.navigateForward('/escanearqr');
+    this.navCtrl.navigateForward('/escaneo');
   }
 }
