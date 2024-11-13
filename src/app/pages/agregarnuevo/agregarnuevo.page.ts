@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from '@ionic/angular'; // Importar AlertController
-import { LocaldbService } from '../../Service/localdb.service';
+import { NavController, AlertController } from '@ionic/angular';
+import { LocaldbService } from '../../Service/localdb.service'; // Asegúrate de que esta ruta sea correcta
 
 @Component({
   selector: 'app-agregarnuevo',
@@ -19,10 +19,11 @@ export class AgregarNuevoPage {
   constructor(
     private navCtrl: NavController,
     private localdbService: LocaldbService,
-    private alertController: AlertController // Inyectar AlertController
+    private alertController: AlertController
   ) {}
 
   async onSubmit() {
+    // Validación de campos
     if (!this.primerNombre || !this.primerApellido || !this.password || !this.emailPrefix || !this.rol || !this.universidad) {
       await this.mostrarAlerta('Error', 'Por favor, rellena todos los campos obligatorios.');
       return;
@@ -33,11 +34,13 @@ export class AgregarNuevoPage {
       email: `${this.emailPrefix}${this.dominio}`,
       password: this.password,
       rol: this.rol,
+      institucion: this.universidad // Incorporando la institución
     };
 
+    // Guardar usuario en localdb
     this.localdbService.guardarUsuario(nuevoUsuario);
     await this.mostrarAlerta('Éxito', 'El usuario ha sido agregado exitosamente.');
-    this.navCtrl.navigateBack('/home');
+    this.navCtrl.navigateRoot('/home'); // Redirigir a la página principal
   }
 
   async mostrarAlerta(header: string, message: string) {
@@ -45,7 +48,7 @@ export class AgregarNuevoPage {
       header: header,
       message: message,
       buttons: ['OK'],
-      cssClass: 'custom-alert' // Clase CSS personalizada para un diseño más bonito
+      cssClass: 'custom-alert'
     });
 
     await alert.present();
