@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular'; // Importar AlertController
 import { LocaldbService } from '../../Service/localdb.service';
 
 @Component({
@@ -16,38 +16,41 @@ export class AgregarNuevoPage {
   dominio: string = '@duocuc.cl'; // Dominio por defecto
   universidad: string = 'DuocUC'; // Universidad por defecto es DuocUC
 
-  constructor(private navCtrl: NavController, private localdbService: LocaldbService) {}
+  constructor(
+    private navCtrl: NavController,
+    private localdbService: LocaldbService,
+    private alertController: AlertController // Inyectar AlertController
+  ) {}
 
-  onSubmit() {
-    // Validar si todos los campos están completos
+  async onSubmit() {
     if (!this.primerNombre || !this.primerApellido || !this.password || !this.emailPrefix || !this.rol || !this.universidad) {
-      alert('Por favor, rellena todos los campos obligatorios.');
-      return; // Detener la ejecución si falta algún campo
+      await this.mostrarAlerta('Error', 'Por favor, rellena todos los campos obligatorios.');
+      return;
     }
 
     const nuevoUsuario = {
       nombre: `${this.primerNombre} ${this.primerApellido}`,
-      email: `${this.emailPrefix}${this.dominio}`, // Concatenar el prefijo con el dominio
+      email: `${this.emailPrefix}${this.dominio}`,
       password: this.password,
       rol: this.rol,
     };
 
-    // Llama al servicio para guardar el nuevo usuario
     this.localdbService.guardarUsuario(nuevoUsuario);
-    this.navCtrl.navigateBack('/admin'); // Redirige a la página de administración
+    await this.mostrarAlerta('Éxito', 'El usuario ha sido agregado exitosamente.');
+    this.navCtrl.navigateBack('/home');
   }
 
-  // Método para cambiar el dominio según la universidad y rol seleccionados
-  onUniversidadChange() {
-    this.updateDominio(); // Actualiza el dominio al cambiar la universidad
+  async mostrarAlerta(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: ['OK'],
+      cssClass: 'custom-alert' // Clase CSS personalizada para un diseño más bonito
+    });
+
+    await alert.present();
   }
 
-  // Método para cambiar el dominio según el rol
-  onRolChange() {
-    this.updateDominio();  // Actualiza el dominio al cambiar el rol
-  }
-
-  // Actualiza el dominio basado en el rol y la universidad
   updateDominio() {
     if (this.universidad === 'DuocUC') {
       this.dominio = this.rol === 'alumno' ? '@duocuc.cl' : '@profesor.duocuc.cl';
