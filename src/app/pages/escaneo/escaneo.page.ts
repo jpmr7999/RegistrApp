@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-escaneo',
@@ -8,17 +8,17 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./escaneo.page.scss'],
 })
 export class EscaneoPage implements OnInit {
-  //del github del profe
   isSupported = false;
   barcodes: Barcode[] = [];
 
-  constructor(private alertController: AlertController) { }
+  constructor(private alertController: AlertController, private navCtrl: NavController) { }
 
   ngOnInit() {
     BarcodeScanner.isSupported().then((result) => {
       this.isSupported = result.supported;
     });
   }
+
   async scan(): Promise<void> {
     const granted = await this.requestPermissions();
     if (!granted) {
@@ -27,6 +27,9 @@ export class EscaneoPage implements OnInit {
     }
     const { barcodes } = await BarcodeScanner.scan();
     this.barcodes.push(...barcodes);
+
+    // Redirige a la página de confirmación de asistencia después de escanear
+    this.navCtrl.navigateForward('/confirm-asistencia');
   }
 
   async requestPermissions(): Promise<boolean> {
