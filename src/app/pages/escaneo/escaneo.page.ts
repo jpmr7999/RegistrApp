@@ -33,7 +33,9 @@ export class EscaneoPage implements OnInit {
   }
 
   async requestPermissions(): Promise<boolean> {
+    console.log("Solicitando permisos de cámara...");
     const { camera } = await BarcodeScanner.requestPermissions();
+    console.log("Permiso de cámara:", camera);
     return camera === 'granted' || camera === 'limited';
   }
 
