@@ -45,9 +45,11 @@ export class HomePage {
         // Almacenar el email del usuario logueado
         localStorage.setItem('loggedInUser', users[validUser].email);
 
-
         if (users[validUser].rol === 'profesor') {
           this.router.navigate(['./principal']);
+        } else if (users[validUser].rol === 'admin') {
+          // Redirigir a la página de administración si el rol es admin
+          this.router.navigate(['/admin']); // Ajusta la ruta a la página de administración que desees
         } else {
           this.router.navigate(['/alumnoprincipal']);
         }
@@ -62,11 +64,9 @@ export class HomePage {
     }
   }
 
-
   async onResetPassword() {
     this.navCtrl.navigateForward('/reestablecer');
   }
-
 
   sendPasswordResetEmail() {
     console.log('Correo de restablecimiento enviado');

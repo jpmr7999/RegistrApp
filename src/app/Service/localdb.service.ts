@@ -8,7 +8,7 @@ export class LocaldbService {
 
   initializeCredentials() {
     const users = {
-      admin: { email: 'admin@profesor.duoc.cl', password: 'duoc2024', nombre: 'Juan Perez', rol: 'administrador' },
+      admin: { email: 'admin@admin.cl', password: 'admin', nombre: 'admin', rol: 'admin' },
       alumno: { email: 'alumno@duocuc.cl', password: 'duoc2024', nombre: 'Jose Vasquez', rol: 'alumno' },
       profesor: { email: 'profesor@profesor.duoc.cl', password: 'duoc2024', nombre: 'Luis Morales', rol: 'profesor' },
       inacapAlumno: { email: 'alumno@inacap.cl', password: 'inacap2024', nombre: 'Carlos Garcia', rol: 'alumno' },
