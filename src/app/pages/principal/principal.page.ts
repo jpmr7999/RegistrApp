@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { LocaldbService } from '../../Service/localdb.service';
 
 @Component({
   selector: 'app-principal',
@@ -7,16 +8,39 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./principal.page.scss'],
 })
 export class PrincipalPage {
+  userName: string = '';
+  userInstitution: string = '';
 
-  constructor(private navCtrl: NavController) {}
+  constructor(private navCtrl: NavController, private localdbService: LocaldbService) {}
 
-  // Va a la página de selección de fecha de asistencia
+  ionViewWillEnter() {
+    this.loadUserData();
+  }
+
+  loadUserData() {
+    const loggedInUserEmail = localStorage.getItem('loggedInUser');
+    if (!loggedInUserEmail) {
+      console.error('Usuario no encontrado en localStorage');
+      return;
+    }
+
+    const users = this.localdbService.getUsers();
+    const user = Object.values(users).find((user: any) => user.email === loggedInUserEmail);
+
+    if (user) {
+      this.userName = users.nombre;
+      this.userInstitution = users.rol === 'alumno' ? 'DuocUC' : 'Inacap';
+    } else {
+      console.error('Usuario no encontrado en la base de datos local');
+    }
+  }
+
   goToFechaAsistenciaPage() {
     this.navCtrl.navigateForward('/fecha-asistencia');
   }
 
-  // Función para cerrar sesión
   logout() {
-    this.navCtrl.navigateRoot('/home'); // Redirige a la página de inicio
+    localStorage.removeItem('loggedInUser'); // Limpia el usuario al cerrar sesión
+    this.navCtrl.navigateRoot('/home');
   }
 }

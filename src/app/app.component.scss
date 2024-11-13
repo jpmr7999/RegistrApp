@@ -1,10 +1,4 @@
 /* my-component.component.scss */
 :host {
   --background: var(--background-color);
-
-  ion-content {
-    --ion-background-color: #ffffff !important;
-    background-color: #ffffff !important;
-  }
-  
 }

@@ -34,20 +34,3 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
-/* Fuerza el fondo blanco para toda la aplicación */
-ion-app, ion-content {
-    --ion-background-color: #ffffff !important; /* Fondo blanco */
-    background-color: #ffffff !important;
-  }
-  
-  /* Evita que el modo oscuro altere los colores */
-  @media (prefers-color-scheme: dark) {
-    ion-app, ion-content {
-      --ion-background-color: #ffffff !important;
-      background-color: #ffffff !important;
-      --ion-text-color: #000000 !important; /* Texto negro */
-    }
-  }
-  
-  
