@@ -11,6 +11,7 @@ export class ConfirmarAsistenciaPage {
 
   constructor(private navCtrl: NavController, private localdbService: LocaldbService) { }
 
+  // Método para confirmar la asistencia
   confirmarAsistencia() {
     const fechaActual = new Date();
     const nuevaAsistencia = {
@@ -21,15 +22,15 @@ export class ConfirmarAsistenciaPage {
       curso: 'Informática y redes ocultas'
     };
 
-    // Guarda la asistencia en localStorage
+    // Guarda la asistencia en localStorage usando el servicio LocaldbService
     this.localdbService.guardarAsistencia(nuevaAsistencia);
 
     // Navega de regreso a la página principal del alumno
-    this.navCtrl.navigateRoot('/alumno-principal');
+    this.navCtrl.navigateRoot('/alumnoprincipal');
   }
 
+  // Método para cancelar y regresar a la página principal sin guardar
   cancelar() {
-    // Regresa a la página principal sin guardar asistencia
     this.navCtrl.back();
   }
 }

@@ -11,10 +11,10 @@ INJECTED from C:\Users\juanp\Desktop\RegistrApp\android\app\src\main\AndroidMani
 	android:name
 		ADDED from C:\Users\juanp\Desktop\RegistrApp\android\app\src\main\AndroidManifest.xml:28:13-62
 manifest
-ADDED from C:\Users\juanp\Desktop\RegistrApp\android\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\juanp\Desktop\RegistrApp\android\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\juanp\Desktop\RegistrApp\android\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\juanp\Desktop\RegistrApp\android\app\src\main\AndroidManifest.xml:2:1-41:12
+ADDED from C:\Users\juanp\Desktop\RegistrApp\android\app\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from C:\Users\juanp\Desktop\RegistrApp\android\app\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from C:\Users\juanp\Desktop\RegistrApp\android\app\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from C:\Users\juanp\Desktop\RegistrApp\android\app\src\main\AndroidManifest.xml:2:1-43:12
 MERGED from [:capacitor-mlkit-barcode-scanning] C:\Users\juanp\Desktop\RegistrApp\node_modules\@capacitor-mlkit\barcode-scanning\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:capacitor-app] C:\Users\juanp\Desktop\RegistrApp\node_modules\@capacitor\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:capacitor-filesystem] C:\Users\juanp\Desktop\RegistrApp\node_modules\@capacitor\filesystem\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
@@ -176,6 +176,10 @@ MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Us
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\juanp\.gradle\caches\transforms-3\42ad966917ed382282d3f1384ce7e092\transformed\transport-backend-cct-2.3.3\AndroidManifest.xml:26:5-67
 	android:name
 		ADDED from C:\Users\juanp\Desktop\RegistrApp\android\app\src\main\AndroidManifest.xml:40:22-64
+uses-permission#android.permission.CAMERA
+ADDED from C:\Users\juanp\Desktop\RegistrApp\android\app\src\main\AndroidManifest.xml:41:5-65
+	android:name
+		ADDED from C:\Users\juanp\Desktop\RegistrApp\android\app\src\main\AndroidManifest.xml:41:22-62
 meta-data#android.support.FILE_PROVIDER_PATHS
 ADDED from C:\Users\juanp\Desktop\RegistrApp\android\app\src\main\AndroidManifest.xml:32:13-34:64
 	android:resource
