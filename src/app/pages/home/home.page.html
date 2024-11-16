@@ -17,25 +17,46 @@
           <ion-card-subtitle class="card-subtitle">Por favor, ingresa tus credenciales</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
-          <ion-list>
-            <ion-item>
-              <ion-input labelPlacement="floating" [(ngModel)]="email" required>
-                <div slot="label">Email <ion-text color="danger">(Requerido)</ion-text></div>
-              </ion-input>
-            </ion-item>
-            <!-- Mueve el item de la contraseña fuera del item del correo -->
-            <ion-item>
-              <ion-input labelPlacement="floating" [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" required>
-                <div slot="label">Contraseña <ion-text color="danger">(Requerido)</ion-text></div>
-                <ion-input-password-toggle slot="end" (click)="togglePasswordVisibility()"></ion-input-password-toggle>
-              </ion-input>
-            </ion-item>
-          </ion-list>
+          <!-- Enlaza el formulario reactivo con [formGroup] -->
+          <form [formGroup]="form" (ngSubmit)="submit()">
+            <ion-list>
+              <ion-item>
+                <ion-input
+                  labelPlacement="floating"
+                  formControlName="email"
+                  required>
+                  <div slot="label">Email <ion-text color="danger">(Requerido)</ion-text></div>
+                </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input
+                  labelPlacement="floating"
+                  [type]="showPassword ? 'text' : 'password'"
+                  formControlName="password"
+                  required>
+                  <div slot="label">Contraseña <ion-text color="danger">(Requerido)</ion-text></div>
+                  <ion-input-password-toggle slot="end" (click)="togglePasswordVisibility()"></ion-input-password-toggle>
+                </ion-input>
+              </ion-item>
+            </ion-list>
 
-          <div class="button-container">
-            <ion-button class="custom-button accept-button" expand="full" (click)="onSubmit()">Aceptar</ion-button>
-            <ion-button class="custom-button reset-button" expand="full" fill="clear" (click)="onResetPassword()">Restablecer contraseña</ion-button>
-          </div>
+            <div class="button-container">
+              <ion-button
+                class="custom-button accept-button"
+                expand="full"
+                type="submit"
+                [disabled]="form.invalid">
+                Aceptar
+              </ion-button>
+              <ion-button
+                class="custom-button reset-button"
+                expand="full"
+                fill="clear"
+                (click)="onResetPassword()">
+                Restablecer contraseña
+              </ion-button>
+            </div>
+          </form>
         </ion-card-content>
       </ion-card>
     </div>
