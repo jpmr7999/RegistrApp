@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar style="--background: #f6cc26;">
+    <ion-title>RegistrAPP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" style="--background: #1a4066;">
+<ion-text color="secondary" class="ion-text-center" >
+  <h1>Iniciar Sesión</h1>
+</ion-text>
+<form #loginForm="ngForm" (ngSubmit)="logear()">
+  <ion-item>
+    <ion-input required labelPlacement="floating" label="Correo" name="text" type="email" aria-hidden="false" [(ngModel)]="usr.correo" ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input required labelPlacement="floating" label="Contraseña" name="password" type="password" aria-hidden="false" [(ngModel)]="usr.password" >
+      <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+    </ion-input>
+  </ion-item>
+
+  <ion-button expand="full" color="primary" type="submit" [disabled]="loginForm.invalid" class="ion-padding">
+    <ion-text color="light">
+      Login
+    </ion-text>
+  </ion-button>
+</form>
+
+<ion-row>
+  <ion-col>
+    <ion-router-link class="underline" color="warning" routerLink="/registro">Crear un usuario</ion-router-link>
+  </ion-col>
+</ion-row>
+    <!-- Botón "Atrás" en la esquina superior izquierda -->
+    <ion-button fill="clear" color="warning" (click)="goBack()" style="position: fixed; top: 60px; left: 10px;">
+      <ion-icon slot="start" name="arrow-back"></ion-icon>
+      Atrás
+    </ion-button>
+</ion-content>

@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar style="--background: #f6cc26;">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>RegistrAPP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" style="--background: #1a4066;">
+<ion-text color="secondary" class="ion-text-center" >
+  <br>
+  <h1>Registro de Usuario</h1>
+</ion-text>
+<form #registroForm="ngForm" (ngSubmit)="registrar()">
+  <ion-item>
+    <ion-input required labelPlacement="floating" label="Usuario" name="text" type="text" [(ngModel)]="usr.username" ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input required labelPlacement="floating" label="Correo" name="text" type="email" [(ngModel)]="usr.correo" ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input required labelPlacement="floating" label="Contraseña" name="password" type="password" [(ngModel)]="usr.password" >
+      <!-- <ion-input-password-toggle slot="end"></ion-input-password-toggle> -->
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input required labelPlacement="floating" label="Nombre" name="password" type="text" [(ngModel)]="usr.nombre" >
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input required labelPlacement="floating" label="Apellido" name="apellido" type="text" [(ngModel)]="usr.apellido" >
+    </ion-input>
+  </ion-item>
+
+  <ion-button expand="full" color="primary" type="submit" [disabled]="registroForm.invalid" class="ion-padding">
+    <ion-text color="light">
+      Registrarse
+    </ion-text>
+  </ion-button>
+</form>
+
+<ion-row>
+  <ion-col>
+    <ion-router-link class="underline" color="warning" routerLink="/login">Volver a login</ion-router-link>
+  </ion-col>
+</ion-row>
+
+<div><ion-button fill="clear" color="warning" (click)="goBack()" style="position: fixed; top: 60px; left: 10px;">
+  <ion-icon slot="start" name="arrow-back"></ion-icon>
+  Atrás
+</ion-button>
+</div>
+
+</ion-content>

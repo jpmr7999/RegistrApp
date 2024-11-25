@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar color="warning">
+
+    <ion-buttons slot="start">
+      <ion-button (click)="dismissModal()" *ngIf="isModal">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+
+
+    <ion-title>
+      <strong>{{title}}</strong>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>

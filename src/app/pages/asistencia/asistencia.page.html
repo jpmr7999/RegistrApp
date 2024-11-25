@@ -1,0 +1,75 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar style="--background: #f6cc26;">
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding" style="--background: #1a4066;">
+
+    <ion-list>
+      <ion-item button routerLink="/asistencia">
+        <ion-label>Ver asistencia</ion-label>
+        <ion-icon name="today"></ion-icon>
+      </ion-item>
+      <ion-item button routerLink="/reportar">
+        <ion-label>Reportar un problema</ion-label>
+        <ion-icon name="alert-circle"></ion-icon>
+      </ion-item>
+      <ion-item button routerLink="/inicio">
+        <ion-label>Cerrar Sesión</ion-label>
+        <ion-icon name="log-out"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar style="--background: #f6cc26;">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>RegistrAPP</ion-title>
+      <ion-icon name="person-circle" slot="end" size="large" class="ion-margin-end" routerLink="/perfil"></ion-icon>
+    </ion-toolbar>
+    <ion-button fill="clear" color="warning" (click)="goBack()" style="position: fixed; top: 60px; left: 10px;">
+      <ion-icon slot="start" name="arrow-back"></ion-icon>
+      Atrás
+    </ion-button>
+  </ion-header>
+  
+
+  <ion-content>
+
+    <div class="flex-center">
+      <ion-content style="--background: #1a4066;">
+        <br>
+        <br>
+        <ion-card>
+
+    <!-- Sección del historial de asistencias -->
+    <ion-row class="ion-margin-top">
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Historial de Asistencia</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item *ngFor="let asistencia of historialAsistencias">
+                <ion-label>
+                  <h2 class="asistencia-date">{{ asistencia.fecha }} - {{ asistencia.hora }}</h2>
+                  <p>{{ asistencia.nombre }} - {{ asistencia.curso }}</p>
+                  <p class="institucion">{{ asistencia.institucion }}</p>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+

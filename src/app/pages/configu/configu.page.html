@@ -1,0 +1,52 @@
+<div class="flex-center">
+<div class="ion-page" id="main-content">
+  <ion-header >
+    <ion-toolbar style="--background: #f6cc26;">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>RegistrAPP</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding" style="--background: #1a4066;" >
+    <ion-text color="secondary" class="ion-text-center" >
+      <h1>Iniciar Sesión</h1>
+    </ion-text>
+    <form (ngSubmit)="resetPassword()" #resetPasswordForm="ngForm">
+      
+      <ion-item>
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input type="email" required [(ngModel)]="email" name="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Nueva Contraseña</ion-label>
+        <ion-input type="password" required [(ngModel)]="newPassword" name="newPassword"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Confirmar Nueva Contraseña</ion-label>
+        <ion-input type="password" required [(ngModel)]="confirmPassword" name="confirmPassword"></ion-input>
+      </ion-item>
+
+      <ion-button color="" expand="full" type="submit" [disabled]="!resetPasswordForm.valid">
+        Restablecer Contraseña
+      </ion-button>
+
+      <ion-row>
+        <ion-col>
+          <ion-router-link class="underline" color="warning" routerLink="/login">Volver a Iniciar Sesión</ion-router-link>
+        </ion-col>
+      </ion-row>
+    </form>
+        <!-- Botón "Atrás" en la esquina superior izquierda -->
+        <ion-button fill="clear" color="warning" (click)="goBack()" style="position: fixed; top: 60px; left: 10px;">
+          <ion-icon slot="start" name="arrow-back"></ion-icon>
+          Atrás
+        </ion-button>
+  </ion-content>
+</div>
+
+
+    

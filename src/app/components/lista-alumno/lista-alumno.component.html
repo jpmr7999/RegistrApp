@@ -1,0 +1,32 @@
+<ion-card>
+  <!-- Botón de "Atrás" en la esquina superior izquierda -->
+  <ion-button fill="clear" color="primary" (click)="goBack()" style="position: absolute; top: 10px; left: 10px;">
+    <ion-icon name="arrow-back" slot="start"></ion-icon>
+    Atrás
+  </ion-button>
+  <br>
+  <br>
+  <ion-card-header>
+    <ion-card-title>Lista de Alumnos</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <div class="places">
+      <div class="place" *ngFor="let alumno of alumnos">
+        <ion-card class="alumno-card">
+          <ion-card-header>
+            <ion-card-title>{{ alumno.nombre }}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <p><strong>Registro Presente:</strong> {{ alumno.presente }}</p>
+            <p><strong>Registro Ausente:</strong> {{ alumno.ausente }}</p>
+            <ion-button color="danger" fill="outline" expand="block" (click)="onClickDelete(alumno)">
+              Borrar
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+  </ion-card-content>
+</ion-card>

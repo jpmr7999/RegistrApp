@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--background: #f6cc26;">
+    <ion-title>RegistrAPP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #1a4066;">
+  <div class="flex-center">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title color="">¡Operaciones relizadas con éxito!</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-button expand="full" color="warning" style="margin-top: 20px;" (click)="confirmarAsistencia()">
+          Confirmar
+        </ion-button>
+    
+        <ion-button expand="full" color="light" style="margin-top: 10px;" (click)="cancelar()">
+          Cancelar
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+    
+  </div>
+      <!-- Botón "Atrás" en la esquina superior izquierda -->
+    <ion-button fill="clear" color="warning" (click)="goBack()" style="position: fixed; top: 60px; left: 10px;">
+      <ion-icon slot="start" name="arrow-back"></ion-icon>
+      Atrás
+    </ion-button>
+</ion-content>

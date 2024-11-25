@@ -1,36 +1,28 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="light">
-    <ion-title text-center>RegistrAPP</ion-title>
+  <ion-toolbar style="--background: #f6cc26;">
+    <ion-title>RegistrAPP - Escaneo</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <!-- Título descriptivo de la sección -->
-  <div class="scan-title-container">
-    <h2>Escanear Códigos de Barras</h2>
-    <p>Presiona el botón para escanear un nuevo código</p>
-  </div>
+<ion-content  class="ion-padding"style="--background: #1a4066;">
+  <ion-list >
+    <ion-item *ngFor="let barcode of barcodes">
+      <ion-label position="stacked">{{ barcode.format }}</ion-label>
+      <ion-input type="text" [value]="barcode.rawValue"></ion-input>
+      <ion-button  routerLink="/listo">
+        <span>Siguiente</span>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="scan()" [disabled]="!isSupported">
+      <ion-icon name="scan"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
-  <!-- Lista de códigos escaneados -->
-  <ion-card *ngIf="barcodes.length > 0" class="barcodes-card">
-    <ion-card-header>
-      <ion-card-title>Códigos Escaneados</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-list>
-        <ion-item *ngFor="let barcode of barcodes">
-          <ion-label>{{ barcode.format }}</ion-label>
-          <ion-input type="text" [value]="barcode.rawValue" readonly></ion-input>
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
-
-  <!-- Botón de Escaneo en el Centro -->
-  <div class="scan-button-container">
-    <ion-button color="primary" expand="block" shape="round" (click)="scan()" [disabled]="!isSupported">
-      <ion-icon name="scan" slot="start"></ion-icon>
-      Escanear Código
-    </ion-button>
-  </div>
 </ion-content>
+
+<ion-button fill="clear" color="warning" (click)="goBack()" style="position: fixed; top: 60px; left: 10px;">
+  <ion-icon slot="start" name="arrow-back"></ion-icon>
+  Atrás
+</ion-button>

@@ -1,75 +1,47 @@
-/* Contenedor principal para centrar todo el contenido */
-.content-container {
+.d-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .qr-placeholder {
+    width: 60px;
+ 
+  }
+  
+  .qr-wrapper {
+    width: 230px;
+    min-height: 230px;
+    background: var(--ion-color-tertiary);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #06509a;
+  }
+  
+  ion-textarea {
+    --highlight-color-valid: var(--ion-color-tertiary);
+    text-align: start;
+  }
+  
+  ion-button {
+    text-transform: none;
+  }
+  
+  .center-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    margin-top: 30px;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
   }
-
-  /* Estilos del código QR */
-  .qr-container {
-    margin-bottom: 20px;
-  }
-
-  .qr-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-
-  .qr-placeholder {
-    width: 190px;
-    height: 190px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 2px solid #ddd;
-  }
-
-  /* Estilo para el texto QR */
-  .qr-text {
-    font-size: 16px;
-    font-weight: 500;
-    color: #555;
-  }
-
-  /* Estilos para el campo de texto para hacerlo más visible */
-  .input-field {
-    width: 100%;
-    max-width: 400px;
-    margin-top: 20px;
-  }
-
-  /* Efecto al enfocarse en el campo de texto */
-  .input-field:focus {
-    border-color: #0056b3;  /* Borde más oscuro al enfocar */
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Sombra al enfocar */
-  }
-
-  /* Botón para compartir */
-  .submit-button {
-    background-color: var(--ion-color-primary);
-    color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-weight: bold;
-  }
-
-  .submit-button:hover {
-    background-color: var(--ion-color-primary-shade);
-  }
-
-  /* Fondo blanco y espaciado cómodo para ion-content */
+  
   ion-content {
-    background-color: #ffffff; /* Asegura que el fondo sea blanco */
+    --background: transparent;
   }
-
-  /* Asegurando que el fondo general sea blanco */
-  ion-page {
-    background-color: #ffffff !important;
-  }
+  

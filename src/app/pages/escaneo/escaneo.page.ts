@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-escaneo',
@@ -8,17 +8,17 @@ import { AlertController, NavController } from '@ionic/angular';
   styleUrls: ['./escaneo.page.scss'],
 })
 export class EscaneoPage implements OnInit {
+  //del github del profe
   isSupported = false;
   barcodes: Barcode[] = [];
 
-  constructor(private alertController: AlertController, private navCtrl: NavController) { }
+  constructor(private alertController: AlertController) { }
 
   ngOnInit() {
     BarcodeScanner.isSupported().then((result) => {
       this.isSupported = result.supported;
     });
   }
-
   async scan(): Promise<void> {
     const granted = await this.requestPermissions();
     if (!granted) {
@@ -27,15 +27,10 @@ export class EscaneoPage implements OnInit {
     }
     const { barcodes } = await BarcodeScanner.scan();
     this.barcodes.push(...barcodes);
-
-    // Redirige a la página de confirmación de asistencia después de escanear
-    this.navCtrl.navigateForward('/confirm-asistencia');
   }
 
   async requestPermissions(): Promise<boolean> {
-    console.log("Solicitando permisos de cámara...");
     const { camera } = await BarcodeScanner.requestPermissions();
-    console.log("Permiso de cámara:", camera);
     return camera === 'granted' || camera === 'limited';
   }
 
@@ -46,5 +41,8 @@ export class EscaneoPage implements OnInit {
       buttons: ['OK'],
     });
     await alert.present();
+  }
+  goBack() {
+    window.history.back(); // Navega a la página anterior usando el historial del navegador
   }
 }

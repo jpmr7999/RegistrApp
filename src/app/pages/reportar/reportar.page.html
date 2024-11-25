@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--background: #f6cc26;">
+    <ion-title>RegistrAPP</ion-title>
+    <ion-icon name="person-circle" slot="end" size="large" class="ion-margin-end" routerLink="/perfil"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #1a4066;">
+  <div class="flex-center">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Reportar un problema en la Aplicación</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Cuéntanos tu problema</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+      </ion-card-content>
+      <ion-button  color="warning" size="full" routerLink="/inicio">
+        Enviar
+      </ion-button>
+    </ion-card>
+  </div>
+  <ion-button fill="clear" color="warning" (click)="goBack()" style="position: fixed; top: 60px; left: 10px;">
+    <ion-icon slot="start" name="arrow-back"></ion-icon>
+    Atrás
+  </ion-button>
+</ion-content>

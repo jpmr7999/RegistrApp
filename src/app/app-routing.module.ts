@@ -3,54 +3,66 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  {
-    path: 'principal',
-    loadChildren: () => import('./pages/principal/principal.module').then( m => m.PrincipalPageModule)
-  },
-  {
-    path: 'ver-asistencia',
-    loadChildren: () => import('./pages/ver-asistencia/ver-asistencia.module').then( m => m.VerAsistenciaPageModule)
-  },
-  {
-    path: 'agregarnuevo',
-    loadChildren: () => import('./pages/agregarnuevo/agregarnuevo.module').then( m => m.AgregarnuevoPageModule)
-  },
-  {
-    path: 'alumnoprincipal',
-    loadChildren: () => import('./pages/alumnoprincipal/alumnoprincipal.module').then( m => m.AlumnoPrincipalPageModule)
-  },
-  {
-    path: 'confirm-asistencia',
-    loadChildren: () => import('./pages/confirm-asistencia/confirm-asistencia.module').then( m => m.ConfirmAsistenciaPageModule)
-  },
-  {
-    path: 'fecha-asistencia',
-    loadChildren: () => import('./pages/fecha-asistencia/fecha-asistencia.module').then( m => m.FechaAsistenciaPageModule)
-  },
-  {
-    path: 'reestablecer',
-    loadChildren: () => import('./pages/reestablecer/reestablecer.module').then( m => m.ReestablecerPageModule)
+    path: 'alumno',
+    loadChildren: () => import('./pages/alumno/alumno.module').then( m => m.AlumnoPageModule)
   },
   {
     path: 'codigo',
     loadChildren: () => import('./pages/codigo/codigo.module').then( m => m.CodigoPageModule)
   },
   {
+    path: 'configu',
+    loadChildren: () => import('./pages/configu/configu.module').then( m => m.ConfiguPageModule)
+  },
+  {
+    path: 'docente',
+    loadChildren: () => import('./pages/docente/docente.module').then( m => m.DocentePageModule)
+  },
+  {
+    path: 'inicio',
+    loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
+  },
+  {
     path: 'escaneo',
     loadChildren: () => import('./pages/escaneo/escaneo.module').then( m => m.EscaneoPageModule)
-  },  {
-    path: 'admin',
-    loadChildren: () => import('./pages/admin/admin.module').then( m => m.AdminPageModule)
   },
-
+  {
+    path: '',
+    redirectTo: 'inicio',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'listo',
+    loadChildren: () => import('./pages/listo/listo.module').then( m => m.ListoPageModule)
+  },
+  {
+    path: 'reportar',
+    loadChildren: () => import('./pages/reportar/reportar.module').then( m => m.ReportarPageModule)
+  },
+  {
+    path: 'registro',
+    loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
+  },
+  {
+    path: 'asignaturas',
+    loadChildren: () => import('./pages/asignaturas/asignaturas.module').then( m => m.AsignaturasPageModule)
+  },
+  {
+    path: 'asistencia',
+    loadChildren: () => import('./pages/asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'asistenciageneral',
+    loadChildren: () => import('./pages/asistenciageneral/asistenciageneral.module').then( m => m.AsistenciageneralPageModule)
+  }
 
 ];
 

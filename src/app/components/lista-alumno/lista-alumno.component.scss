@@ -1,0 +1,12 @@
+.places {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Espacio entre tarjetas */
+  }
+  
+  .alumno-card {
+    margin-bottom: 1rem;
+    border: 1px solid #e0e0e0; /* Borde sutil */
+    border-radius: 8px;
+  }
+  
