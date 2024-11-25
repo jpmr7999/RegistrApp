@@ -1,11 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AgregarAsignaturaComponent } from 'src/app/components/agregar-asignatura/agregar-asignatura.component';
-import { AsignaturasService } from '../../Service/asignatura.service'
+import { AsignaturasService } from 'src/app/services/asignaturas.service';
 
 @Component({
   selector: 'app-asignaturas',
-  templateUrl: './asignatura.page.html',
-  styleUrls: ['./asignatura.page.scss'],
+  templateUrl: './asignaturas.page.html',
+  styleUrls: ['./asignaturas.page.scss'],
 })
 export class AsignaturasPage implements OnInit {
 
