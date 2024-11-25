@@ -1,0 +1,33 @@
+<app-header [isModal]="true" title="RegistrAPP"></app-header>
+
+<ion-content style="--background: #1a4066;">
+  <ion-card>
+    <ion-card-header style="--background: #f6cc26;">
+      <ion-card-title>Registro de Asignatura</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+        <ion-item>
+          <ion-label position="floating">Nombre Asignatura</ion-label>
+          <ion-input type="text" formControlName="nombre" clear-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Descripción</ion-label>
+          <ion-textarea formControlName="descripcion"></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Clases Registradas</ion-label>
+          <ion-input type="number" formControlName="clases" clear-input></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" type="submit" style="--background: #f6cc26;" class="ion-margin-top">
+          Enviar
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+

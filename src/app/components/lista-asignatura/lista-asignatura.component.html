@@ -1,0 +1,35 @@
+<div class="places">
+  <div class="place" *ngFor="let asignatura of asignaturas">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{asignatura.nombre}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>{{asignatura.descripcion}}</p>
+        <p>Clases Registradas: {{asignatura.clases}}</p>
+
+        <!-- Botón para Ver Asistencia General -->
+        <div class="ion-padding" slot="content">
+          <ion-button size="full" color="warning" (click)="goToAsistenciaGeneral()">
+            Ver asistencia general
+          </ion-button>
+        </div>
+
+        <!-- Botón para Generar Código de Asistencia -->
+        <div class="ion-padding" slot="content">
+          <ion-button size="full" color="warning" (click)="goToCodigo()">
+            Generar Código de Asistencia
+          </ion-button>
+        </div>
+
+        <!-- Botón para Borrar Asignatura -->
+        <div class="ion-padding" slot="content" style="display: flex; justify-content: center; align-items: center;">
+          <ion-button color="danger" (click)="onClickDelete(asignatura)">
+            Borrar Asignatura
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</div>

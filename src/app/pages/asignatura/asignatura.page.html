@@ -1,0 +1,58 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar style="--background: #f6cc26;">
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding" style="--background: #1a4066;">
+    <ion-list>
+      <ion-item button routerLink="/asignaturas">
+        <ion-label>Asignaturas</ion-label>
+        <ion-icon name="library"></ion-icon>
+      </ion-item>
+      <ion-item button routerLink="/reportar">
+        <ion-label>Reportar un problema</ion-label>
+        <ion-icon name="alert-circle"></ion-icon>
+      </ion-item>
+      <ion-item button routerLink="/inicio">
+        <ion-label>Cerrar Sesión</ion-label>
+        <ion-icon name="log-out"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar style="--background: #f6cc26;">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title> RegistrAPP</ion-title>
+
+      <ion-icon name="person-circle" slot="end" size="large" class="ion-margin-end" routerLink="/perfil"></ion-icon>
+    </ion-toolbar>
+      <!-- El botón "Atrás" fuera de la card y con posición fija en la pantalla -->
+  <ion-button fill="clear" color="warning" (click)="goBack()" style="position: fixed; top: 60px; left: 10px;">
+    <ion-icon slot="start" name="arrow-back"></ion-icon>
+    Atrás
+  </ion-button>
+
+  </ion-header>
+
+  <ion-content class="ion-padding" style="--background: #1a4066;">
+    <br>
+    <br>
+    <!-- Aquí va la card con las asignaturas -->
+zz
+    <!-- Botón Flotante para nueva asignatura (si lo tienes) -->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="addUpdateAsignatura()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+  </ion-content>
+
+
+</div>
