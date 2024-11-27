@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { User } from '';
+import { Usuario } from './../Interfaces/usuariolog';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class FirebaseUserService {
   constructor(private firestore: AngularFirestore) {}
 
   // Crear un nuevo usuario con ID automático
-  crearUsuario(usuario: User): Promise<void> {
+  crearUsuario(usuario: Usuario): Promise<void> {
     const id = this.firestore.createId();
     return this.firestore
       .collection(this.collectionName)
@@ -21,22 +21,22 @@ export class FirebaseUserService {
   }
 
   // Obtener todos los usuarios
-  obtenerUsuarios(): Observable<User[]> {
+  obtenerUsuarios(): Observable<Usuario[]> {
     return this.firestore
-      .collection<User>(this.collectionName)
+      .collection<Usuario>(this.collectionName)
       .valueChanges();
   }
 
   // Obtener un usuario por su ID
-  obtenerUsuarioPorId(id: string): Observable<User | undefined> {
+  obtenerUsuarioPorId(id: string): Observable<Usuario | undefined> {
     return this.firestore
-      .collection<User>(this.collectionName)
+      .collection<Usuario>(this.collectionName)
       .doc(id)
       .valueChanges();
   }
 
   // Actualizar un usuario
-  actualizarUsuario(id: string, datos: Partial<User>): Promise<void> {
+  actualizarUsuario(id: string, datos: Partial<Usuario>): Promise<void> {
     return this.firestore.collection(this.collectionName).doc(id).update(datos);
   }
 
