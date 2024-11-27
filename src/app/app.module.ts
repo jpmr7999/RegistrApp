@@ -18,6 +18,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore'; // Impo
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule, // Agregado correctamente
+    
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
