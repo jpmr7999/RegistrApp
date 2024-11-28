@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController, AlertController } from '@ionic/angular';
-import { LocaldbService } from '../../Service/localdb.service';
+import { FirebaseUserService } from '../../Service/firebaseuser.service'; // Asegúrate de que la ruta sea correcta
+import { Usuario } from '../../Interfaces/usuariolog'; // Asegúrate de importar la interfaz Usuario
 
 @Component({
   selector: 'app-home',
@@ -17,10 +18,8 @@ export class HomePage {
     private router: Router,
     private navCtrl: NavController,
     private alertCtrl: AlertController,
-    private localDbService: LocaldbService
-  ) {
-    this.localDbService.initializeCredentials();
-  }
+    private firebaseUserService: FirebaseUserService // Inyectamos el servicio de Firebase
+  ) {}
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword; // Alterna la visibilidad
@@ -35,32 +34,31 @@ export class HomePage {
       });
       await alert.present();
     } else {
-      const users = this.localDbService.getUsers();
-      const userKeys = Object.keys(users);
-      const validUser = userKeys.find(key =>
-        users[key].email === this.email && users[key].password === this.password
-      );
+      // Usamos Firebase en lugar de LocaldbService para obtener los usuarios
+      this.firebaseUserService.obtenerUsuarios().subscribe(async (usuarios: Usuario[]) => {
+        const validUser = usuarios.find(usuario =>
+          usuario.email === this.email && usuario.contraseña === this.password
+        );
 
-      if (validUser) {
-        // Almacenar el email del usuario logueado
-        localStorage.setItem('loggedInUser', users[validUser].email);
+        if (validUser) {
+          // Almacenar el email del usuario logueado
+          localStorage.setItem('loggedInUser', validUser.email);
 
-        if (users[validUser].rol === 'profesor') {
-          this.router.navigate(['./principal']);
-        } else if (users[validUser].rol === 'admin') {
-          // Redirigir a la página de administración si el rol es admin
-          this.router.navigate(['/admin']); // Ajusta la ruta a la página de administración que desees
+          if (validUser.rol === 'profesor') {
+            this.router.navigate(['./principal']);
+          } else {
+            this.router.navigate(['/alumnoprincipal']);
+          }
         } else {
-          this.router.navigate(['/alumnoprincipal']);
+          const alert = await this.alertCtrl.create({
+            header: 'Error',
+            message: 'Email o contraseña incorrectos.',
+            buttons: ['OK']
+          });
+          await alert.present();
         }
-      } else {
-        const alert = await this.alertCtrl.create({
-          header: 'Error',
-          message: 'Email o contraseña incorrectos.',
-          buttons: ['OK']
-        });
-        await alert.present();
-      }
+
+      });
     }
   }
 

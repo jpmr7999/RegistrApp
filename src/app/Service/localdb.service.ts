@@ -69,5 +69,5 @@ export class LocaldbService {
     const user = Object.keys(users).find(key => users[key].email === loggedInUserEmail);
     return user ? users[user].institucion : '';
   }
-  
+
 }
