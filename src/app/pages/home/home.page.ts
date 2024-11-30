@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController, AlertController } from '@ionic/angular';
-import { FirebaseUserService } from '../../Service/firebaseuser.service'; // Asegúrate de que la ruta sea correcta
-import { Usuario } from '../../Interfaces/usuariolog'; // Asegúrate de importar la interfaz Usuario
+import { FirebaseUserService } from '../../Service/firebaseuser.service';
 
 @Component({
   selector: 'app-home',
@@ -12,17 +11,17 @@ import { Usuario } from '../../Interfaces/usuariolog'; // Asegúrate de importar
 export class HomePage {
   email: string = '';
   password: string = '';
-  showPassword: boolean = false; // Controla la visibilidad de la contraseña
+  showPassword: boolean = false;
 
   constructor(
     private router: Router,
     private navCtrl: NavController,
     private alertCtrl: AlertController,
-    private firebaseUserService: FirebaseUserService // Inyectamos el servicio de Firebase
+    private firebaseUserService: FirebaseUserService
   ) {}
 
   togglePasswordVisibility() {
-    this.showPassword = !this.showPassword; // Alterna la visibilidad
+    this.showPassword = !this.showPassword;
   }
 
   async onSubmit() {
@@ -30,43 +29,55 @@ export class HomePage {
       const alert = await this.alertCtrl.create({
         header: 'Error',
         message: 'Por favor, completa ambos campos.',
-        buttons: ['OK']
+        buttons: ['OK'],
       });
       await alert.present();
-    } else {
-      // Usamos Firebase en lugar de LocaldbService para obtener los usuarios
-      this.firebaseUserService.obtenerUsuarios().subscribe(async (usuarios: Usuario[]) => {
-        const validUser = usuarios.find(usuario =>
-          usuario.email === this.email && usuario.contraseña === this.password
-        );
+      return;
+    }
 
-        if (validUser) {
-          // Almacenar el email del usuario logueado
-          localStorage.setItem('loggedInUser', validUser.email);
-
-          if (validUser.rol === 'profesor') {
-            this.router.navigate(['./principal']);
-          } else {
-            this.router.navigate(['/alumnoprincipal']);
-          }
-        } else {
-          const alert = await this.alertCtrl.create({
-            header: 'Error',
-            message: 'Email o contraseña incorrectos.',
-            buttons: ['OK']
-          });
-          await alert.present();
-        }
-
+    try {
+      await this.firebaseUserService.autenticarUsuario(this.email, this.password);
+      localStorage.setItem('loggedInUser', this.email);
+      this.router.navigate(['/alumnoprincipal']);
+    } catch (error: any) {
+      const errorMessage =
+        error?.message ?? 'Ha ocurrido un error durante la autenticación.';
+      const alert = await this.alertCtrl.create({
+        header: 'Error',
+        message: errorMessage,
+        buttons: ['OK'],
       });
+      await alert.present();
     }
   }
 
+  // Método para restablecer la contraseña
   async onResetPassword() {
-    this.navCtrl.navigateForward('/reestablecer');
-  }
+    if (this.email.trim() === '') {
+      const alert = await this.alertCtrl.create({
+        header: 'Error',
+        message: 'Por favor, ingresa tu correo electrónico para restablecer la contraseña.',
+        buttons: ['OK'],
+      });
+      await alert.present();
+      return;
+    }
 
-  sendPasswordResetEmail() {
-    console.log('Correo de restablecimiento enviado');
+    try {
+      await this.firebaseUserService.resetPassword(this.email); // Llamada al servicio
+      const alert = await this.alertCtrl.create({
+        header: 'Éxito',
+        message: 'Se ha enviado un enlace para restablecer tu contraseña a tu correo electrónico.',
+        buttons: ['OK'],
+      });
+      await alert.present();
+    } catch (error: any) {
+      const alert = await this.alertCtrl.create({
+        header: 'Error',
+        message: error?.message ?? 'Ha ocurrido un error al intentar restablecer la contraseña.',
+        buttons: ['OK'],
+      });
+      await alert.present();
+    }
   }
 }

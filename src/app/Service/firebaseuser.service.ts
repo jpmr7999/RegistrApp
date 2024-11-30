@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Usuario } from '../Interfaces/usuariolog'; // Ajuste de ruta si es necesario
-import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Usuario } from '../Interfaces/usuariolog'; // Asegúrate de tener la ruta correcta
+import { Observable, from } from 'rxjs';  // Importar 'from' de rxjs
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,10 @@ import { Observable } from 'rxjs';
 export class FirebaseUserService {
   private collectionName = 'usuarios';
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(
+    private firestore: AngularFirestore,
+    private afAuth: AngularFireAuth // Inyecta AngularFireAuth para usar la autenticación
+  ) {}
 
   /**
    * Crear un nuevo usuario y devolver el ID generado
@@ -30,6 +34,25 @@ export class FirebaseUserService {
   obtenerUsuarios(): Observable<Usuario[]> {
     return this.firestore.collection<Usuario>(this.collectionName).valueChanges();
   }
+
+  /**
+   * Autenticar un usuario con su email y contraseña
+   * @param email Email del usuario
+   * @param password Contraseña del usuario
+   * @returns Observable con el resultado de la autenticación
+   */
+  async autenticarUsuario(email: string, password: string): Promise<void> {
+    try {
+      await this.afAuth.signInWithEmailAndPassword(email, password);
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      } else {
+        throw new Error('Ha ocurrido un error desconocido.');
+      }
+    }
+  }
+
 
   /**
    * Obtener un usuario por su ID
@@ -58,4 +81,17 @@ export class FirebaseUserService {
   eliminarUsuario(id: string): Promise<void> {
     return this.firestore.collection(this.collectionName).doc(id).delete();
   }
+
+  async resetPassword(email: string): Promise<void> {
+    try {
+      await this.afAuth.sendPasswordResetEmail(email);
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      } else {
+        throw new Error('Error desconocido al enviar el correo de restablecimiento.');
+      }
+    }
+  }
+
 }

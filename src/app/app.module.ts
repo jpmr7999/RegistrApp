@@ -4,10 +4,14 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { environment } from 'src/environments/environment.prod';
+
+// Firebase Modules
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore'; // Importación correcta
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
+// Environment configuration
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,10 +19,9 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore'; // Impo
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule,
-    AngularFirestoreModule, // Agregado correctamente
-    
+    AngularFireModule.initializeApp(environment.firebaseConfig), // Inicialización de Firebase
+    AngularFireAuthModule, // Módulo de autenticación
+    AngularFirestoreModule, // Módulo de Firestore
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
