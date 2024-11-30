@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Usuario } from '../Interfaces/usuariolog'; // Asegúrate de tener la ruta correcta
-import { Observable, from } from 'rxjs';  // Importar 'from' de rxjs
+import { Usuario } from '../Interfaces/usuariolog'; // Ensure the path is correct
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,61 +12,52 @@ export class FirebaseUserService {
 
   constructor(
     private firestore: AngularFirestore,
-    private afAuth: AngularFireAuth // Inyecta AngularFireAuth para usar la autenticación
+    private afAuth: AngularFireAuth // Injects AngularFireAuth for authentication
   ) {}
 
   /**
-   * Crear un nuevo usuario y devolver el ID generado
-   * @param usuario Usuario a crear
-   * @returns Promise con el ID generado
+   * Create a new user and return the generated ID
+   * @param usuario User to create
+   * @returns Promise with the generated ID
    */
   async crearUsuario(usuario: Usuario): Promise<string> {
-    const id = this.firestore.createId(); // Genera un ID único
-    usuario.id = id; // Asigna el ID al usuario
+    const id = this.firestore.createId(); // Generates a unique ID
+    usuario.id = id; // Assign the ID to the user
     await this.firestore.collection(this.collectionName).doc(id).set(usuario);
-    return id; // Devuelve el ID del usuario creado
+    return id; // Returns the created user ID
   }
 
   /**
-   * Obtener todos los usuarios
-   * @returns Observable con la lista de usuarios
+   * Get all users
+   * @returns Observable with the list of users
    */
   obtenerUsuarios(): Observable<Usuario[]> {
     return this.firestore.collection<Usuario>(this.collectionName).valueChanges();
   }
 
   /**
-   * Autenticar un usuario con su email y contraseña
-   * @param email Email del usuario
-   * @param password Contraseña del usuario
-   * @returns Observable con el resultado de la autenticación
+   * Authenticate a user with email and password
+   * @param email User email
+   * @param password User password
+   * @returns Promise<void> for authentication result
    */
   async autenticarUsuario(email: string, password: string): Promise<void> {
-    try {
-      await this.afAuth.signInWithEmailAndPassword(email, password);
-    } catch (error) {
-      if (error instanceof Error) {
-        throw new Error(error.message);
-      } else {
-        throw new Error('Ha ocurrido un error desconocido.');
-      }
-    }
+    await this.afAuth.signInWithEmailAndPassword(email, password);
   }
 
-
   /**
-   * Obtener un usuario por su ID
-   * @param id ID del usuario
-   * @returns Observable con el usuario encontrado o undefined si no existe
+   * Get a user by ID
+   * @param id User ID
+   * @returns Observable with the user found or undefined if not found
    */
   obtenerUsuarioPorId(id: string): Observable<Usuario | undefined> {
     return this.firestore.collection<Usuario>(this.collectionName).doc(id).valueChanges();
   }
 
   /**
-   * Actualizar un usuario por su ID
-   * @param id ID del usuario
-   * @param datos Datos parciales a actualizar
+   * Update a user by ID
+   * @param id User ID
+   * @param datos Partial data to update
    * @returns Promise<void>
    */
   actualizarUsuario(id: string, datos: Partial<Usuario>): Promise<void> {
@@ -74,24 +65,20 @@ export class FirebaseUserService {
   }
 
   /**
-   * Eliminar un usuario por su ID
-   * @param id ID del usuario
+   * Delete a user by ID
+   * @param id User ID
    * @returns Promise<void>
    */
   eliminarUsuario(id: string): Promise<void> {
     return this.firestore.collection(this.collectionName).doc(id).delete();
   }
 
+  /**
+   * Reset password for a given email
+   * @param email Email for password reset
+   * @returns Promise<void>
+   */
   async resetPassword(email: string): Promise<void> {
-    try {
-      await this.afAuth.sendPasswordResetEmail(email);
-    } catch (error) {
-      if (error instanceof Error) {
-        throw new Error(error.message);
-      } else {
-        throw new Error('Error desconocido al enviar el correo de restablecimiento.');
-      }
-    }
+    await this.afAuth.sendPasswordResetEmail(email);
   }
-
 }
